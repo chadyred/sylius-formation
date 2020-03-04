@@ -36,3 +36,13 @@ services:
         
     App\Context\TimeBasedChannelContext:
         tags: ['sylius.context.channel']
+        
+    App\ClockInterface:
+        class: App\RealClock
+    
+    App\Shipping\CustomCalculator:
+        tags:
+            -
+                name: sylius.shipping_calculator
+                calculator: custom
+                label: 'Custom Calculator'
