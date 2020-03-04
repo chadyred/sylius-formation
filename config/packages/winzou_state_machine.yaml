@@ -14,3 +14,10 @@ winzou_state_machine:
             unverify:
                 from: [verified]
                 to: unverified
+        callbacks:
+            after:
+                email_notification:
+                    on: 'verify'
+                    do: ['@App\Listener\SupplierNotifier', '__invoke']
+                    args: ['object']
+

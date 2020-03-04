@@ -58,3 +58,6 @@ services:
             - { name: form.type }
         arguments: 
             - '%app.model.supplier.class%'
+    
+    App\Listener\SupplierNotifier:
+        public: true

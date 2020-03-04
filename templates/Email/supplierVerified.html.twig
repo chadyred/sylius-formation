@@ -1,0 +1,9 @@
+{% block subject %}
+    You have been verified
+{% endblock subject %}
+
+{% block body %}
+    {% autoescape %}
+        Successful verified with "{{ supplier.name }}"
+    {% endautoescape %}
+{% endblock body %}

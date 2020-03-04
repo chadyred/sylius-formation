@@ -1,0 +1,18 @@
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                suppliers_bulk:
+                    name: supplier
+                    options:
+                        custom:
+                            name: 'foo'
+                            email: 'foo@foo.com'
+        my_custom:
+            fixtures:
+                suppliers_bulk_2:
+                    name: supplier
+                    options:
+                        custom:
+                            name: 'bar'
+                            email: 'bar@bar.com'

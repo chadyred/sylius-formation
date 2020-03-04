@@ -21,8 +21,14 @@ sylius_grid:
                     sortable: ~
                 state:
                     type: string
+                email:
+                    type: string
+                    label: Email
+                    sortable: ~
             filters:
                 name:
+                    type: string
+                email:
                     type: string
             actions:
                 main:

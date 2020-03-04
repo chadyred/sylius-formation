@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -31,6 +32,15 @@ class Supplier implements ResourceInterface
      * @ORM\Column(name="name", type="string")
      */
     private $name;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string")
+     * @Assert\Email()
+     */
+    private $email;
 
     /**
      * @var string
@@ -79,5 +89,19 @@ class Supplier implements ResourceInterface
         $this->state = $state;
     }
 
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
 
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
 }
