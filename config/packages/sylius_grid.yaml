@@ -1,4 +1,7 @@
 sylius_grid:
+    templates:
+        action:
+            apply_transition: "@SyliusUi/Grid/Action/applyTransition.html.twig"
     grids:
         app_supplier:
             driver:
@@ -16,6 +19,8 @@ sylius_grid:
                     type: string
                     label: sylius.ui.name
                     sortable: ~
+                state:
+                    type: string
             filters:
                 name:
                     type: string
@@ -28,3 +33,29 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+
+                    verify:
+                        type: apply_transition
+                        label: sylius.ui.accept
+                        icon: checkmark
+                        options:
+                            link:
+                                route: app_supplier_verify
+                                parameters:
+                                    id: resource.id
+                            class: green
+                            transition: verify
+                            graph: app_supplier
+                            
+                    unverify:
+                        type: apply_transition
+                        label: sylius.ui.reject
+                        icon: remove
+                        options:
+                            link:
+                                route: app_supplier_unverify
+                                parameters:
+                                    id: resource.id
+                            class: yellow
+                            transition: unverify
+                            graph: app_supplier

@@ -13,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Supplier implements ResourceInterface
 {
+    const STATE_UNVERIFIED = 'unverified';
+    const STATE_VERIFIED = 'verified';
+
     /**
      * @var $id
      *
@@ -28,6 +31,18 @@ class Supplier implements ResourceInterface
      * @ORM\Column(name="name", type="string")
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="state", type="string")
+     */
+    private $state;
+
+    public function __construct()
+    {
+        $this->state = self::STATE_UNVERIFIED;
+    }
 
     /**
      * @return mixed
@@ -49,4 +64,20 @@ class Supplier implements ResourceInterface
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getState(): string
+    {
+        return $this->state;
+    }
+
+    /** @internal */
+    public function setState(string $state): void
+    {
+        $this->state = $state;
+    }
+
+
 }

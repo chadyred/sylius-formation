@@ -12,3 +12,29 @@ app_supplier:
             index:
                 icon: 'file image outline'
     type: sylius.resource
+
+app_supplier_verify:
+    path: /admin/supplier/{id}/verify
+    methods: [PUT]
+    defaults:
+        _controller: app.controller.supplier:applyStateMachineTransitionAction
+        _sylius:
+            permission: true
+            state_machine:
+                graph: app_supplier
+                transition: verify
+            redirect: referer
+            flash: sylius.review.accept
+
+app_supplier_unverify:
+    path: /admin/supplier/{id}/unverify
+    methods: [PUT]
+    defaults:
+        _controller: app.controller.supplier:applyStateMachineTransitionAction
+        _sylius:
+            permission: true
+            state_machine:
+                graph: app_supplier
+                transition: unverify
+            redirect: referer
+            flash: sylius.review.reject

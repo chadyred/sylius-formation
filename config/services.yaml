@@ -52,3 +52,9 @@ services:
             -
                 name: kernel.event_listener
                 event: 'sylius.menu.admin.main'
+    
+    App\Form\Type\SupplierType:
+        tags:
+            - { name: form.type }
+        arguments: 
+            - '%app.model.supplier.class%'
