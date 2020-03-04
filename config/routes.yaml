@@ -1,0 +1,14 @@
+app_supplier:
+    resource: |
+        alias: app.supplier
+        section: admin # app_ADMIN
+        path: admin/supplier # prefix with /admin
+        templates: SyliusAdminBundle:Crud
+        redirect: update
+        grid: app_supplier
+        vars:
+            all:
+                subheader: app.ui.supplier
+            index:
+                icon: 'file image outline'
+    type: sylius.resource

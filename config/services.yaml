@@ -46,3 +46,9 @@ services:
                 name: sylius.shipping_calculator
                 calculator: custom
                 label: 'Custom Calculator'
+    
+    App\Listener\SupplierMenuBuilder:
+        tags:
+            -
+                name: kernel.event_listener
+                event: 'sylius.menu.admin.main'
