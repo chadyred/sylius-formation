@@ -90,3 +90,5 @@ services:
     App\Inventory\NotyfyingOrderInventoryOperator:
         # Old service without autowiring is available with .inner at the end '@sylius.custom_inventory.order_inventory_operator.inner'
         decorates: 'sylius.custom_inventory.order_inventory_operator'
+    
+    

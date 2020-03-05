@@ -21,4 +21,10 @@ winzou_state_machine:
                     do: ['@App\Listener\SupplierNotifier', '__invoke']
                     args: ['object']
 
-        
+    sylius_shipment:
+        callbacks:
+            after:
+                add_tracking_code:
+                    on: !php/const Sylius\Component\Core\OrderCheckoutTransitions::TRANSITION_COMPLETE
+                    do: [ App\Listener\AutomaticTrackingCodeAssignerListener ]
+                    args: [ App\Shipping\TrackingCodeProvider, "object.getShipments()[0]"]
