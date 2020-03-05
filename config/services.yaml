@@ -61,3 +61,32 @@ services:
     
     App\Listener\SupplierNotifier:
         public: true
+
+    App\Form\Type\ColorAttributeType:
+        tags:
+            -
+                name: sylius.attribute.type
+                attribute_type: 'text'
+                label: 'Color'
+                form_type: App\Form\Type\ColorAttributeType
+                configuration_form_type: App\Form\Type\ColorAttributeConfigurationType
+
+    App\Listener\AutomaticProductReviewApprovalListener:
+        tags:
+            -
+                name: doctrine.event_listener
+                event: prePersist
+
+    App\Listener\ProductReviewFlashCustomListener:
+        tags:
+            -   
+                name: kernel.event_listener
+                # this is the only required option for the lifecycle listener tag
+                event: sylius.product_review.post_create
+
+    Symfony\Component\HttpFoundation\Session\Session: "@session"
+    SM\Factory\FactoryInterface: "@sm.factory"
+    
+    App\Inventory\NotyfyingOrderInventoryOperator:
+        # Old service without autowiring is available with .inner at the end '@sylius.custom_inventory.order_inventory_operator.inner'
+        decorates: 'sylius.custom_inventory.order_inventory_operator'

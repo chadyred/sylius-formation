@@ -1,0 +1,4 @@
+app:
+    review:
+        accept: Review accept
+        reject: Review reject
