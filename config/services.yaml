@@ -90,5 +90,8 @@ services:
     App\Inventory\NotyfyingOrderInventoryOperator:
         # Old service without autowiring is available with .inner at the end '@sylius.custom_inventory.order_inventory_operator.inner'
         decorates: 'sylius.custom_inventory.order_inventory_operator'
-    
-    
+
+    App\Promotion\PastOrdersContainsProductRuleChecker:
+        tags:
+            - { name: sylius.promotion_rule_checker, type: previous_order_contains, form_type: Sylius\Bundle\PromotionBundle\Form\Type\Rule\CartQuantityConfigurationType, label: Previous product altready buy }
+
